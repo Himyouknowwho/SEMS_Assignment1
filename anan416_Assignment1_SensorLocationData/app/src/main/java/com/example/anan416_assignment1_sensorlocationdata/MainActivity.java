@@ -12,7 +12,9 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
-    private TextView textView;
+    private TextView textView1;
+    private TextView textView2;
+    private TextView textView3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +22,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
 
 
-        textView = findViewById(R.id.textView2);
+        textView1 = findViewById(R.id.textView2);
+        textView2 = findViewById(R.id.textView3);
+        textView3 = findViewById(R.id.textView4);
         SensorManager sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         Sensor sensor = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
         sensorManager.registerListener(MainActivity.this, sensor, SensorManager.SENSOR_DELAY_NORMAL);
@@ -29,7 +33,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        textView.setText("Value: " + event.values[0]);
+        textView1.setText("X: " + event.values[0]);
+        textView2.setText("Y: " + event.values[1]);
+        textView3.setText("Z: " + event.values[2]);
     }
 
     @Override
